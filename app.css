@@ -1,0 +1,26 @@
+.button-container {
+	margin: 0 0 0 20px;
+}
+
+.get, .put, .post {
+	width: 30%;
+}
+
+.home {
+	width: 220px;
+	font-size: 14px;
+	margin: 0 0 0 50px;
+}
+
+.response {
+	text-align: center;
+}
+
+.response-body {
+	font-weight: bold;
+	font-family: courier;
+}
+
+.response-header {
+	margin: 0 0 10px 0;
+}

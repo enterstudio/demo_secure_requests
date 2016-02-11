@@ -1,0 +1,5 @@
+<div class="button-container">
+	<button class="btn get">GET</button>
+	<button class="btn put">PUT</button>
+	<button class="btn post">POST</button>
+</div>

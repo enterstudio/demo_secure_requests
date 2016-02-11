@@ -1,0 +1,21 @@
+<div class="container-response">
+	{{#if get}}
+		<h4 class="response response-header">GET Response</h4>
+		<div class="well">
+			<p class="response response-body">{{response}}</p>
+		</div>
+	{{/if}}
+	{{#if put}}
+		<h4 class="response response-header">PUT Response</h4>
+		<div class="well">
+			<p class="response response-body">{{response}}</p>
+		</div>
+	{{/if}}
+	{{#if post}}
+		<h4 class="response response-header">POST Response</h4>
+		<div class="well">
+			<p class="response response-body">{{response}}</p>
+		</div>
+	{{/if}}
+</div>
+<button class="btn home">Start Over</button>

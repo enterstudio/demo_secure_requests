@@ -1,0 +1,43 @@
+{
+  "name": "Secure Requests",
+  "author": {
+    "name": "Success Apps - Jeremiah Currier",
+    "email": "successapps@zendesk.com",
+    "url": "https://zendesk.atlassian.net/wiki/display/SUCCESS/Success+Apps"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": "ticket_sidebar",
+  "version": "1.0",
+  "frameworkVersion": "1.0",
+  "domainWhitelist": "requestb.in",
+  "parameters": [
+    {
+      "name": "username",
+      "type": "text",
+      "required": true,
+      "default": "USERNAME",
+      "secure": true
+    },
+    {
+      "name": "password",
+      "type": "text",
+      "required": true,
+      "default": "PASSWORD",
+      "secure": true
+    },
+    {
+      "name": "example",
+      "type": "text",
+      "required": true,
+      "default": "EXAMPLE SETTING",
+      "secure": true
+    },
+    {
+      "name": "logging",
+      "type": "checkbox",
+      "required": false,
+      "default": "1"
+    }
+  ]
+}
