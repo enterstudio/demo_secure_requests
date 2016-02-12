@@ -1,5 +1,13 @@
 <div class="button-container">
+	<p><strong>Requestb.in</strong></p>
 	<button class="btn get">GET</button>
 	<button class="btn put">PUT</button>
 	<button class="btn post">POST</button>
+</div>
+<br>
+<div class="lampiris button-container">
+	<p><strong>Lampiris</strong></p>
+	<button class="btn get-lampiris">GET</button>
+	<button class="btn put-lampiris">PUT</button>
+	<button class="btn post-lampiris">POST</button>
 </div>

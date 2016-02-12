@@ -2,7 +2,7 @@
 	margin: 0 0 0 20px;
 }
 
-.get, .put, .post {
+.get, .put, .post, .get-lampiris, .put-lampiris, .post-lampiris {
 	width: 30%;
 }
 

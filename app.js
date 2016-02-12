@@ -6,13 +6,27 @@
     
       get: function() {
         return {
-          url: 'http://requestb.in/pz5ou8pz?example={{setting.example}}',
+          url: 'http://requestb.in/pz5ou8pz?username={{setting.username}}&password={{setting.password}}',
           type: 'GET',
           dataType: 'json',
           secure: true,
 	        headers: {
-	          'X-Setting' : '{{setting.example}}'
+	          'X-Setting' : '{{setting.username}}, {{setting.password}}'
 	        }
+        };
+      },
+
+      getLampirisContacts: function() {
+        return {
+          url: 'https://api.lampiris.be/v1/contacts',
+          // url: 'http://requestb.in/pz5ou8pz',
+          type: 'GET',
+          dataType: 'json',
+          secure: true,
+          headers: {
+            "Authorization" : 'Basic ' + '{{setting.base64_encoded_username_and_password_without_Basic}}'
+            // "Authorization" : '{{setting.base64_encoded_username_and_password_with_Basic}}'
+          }
         };
       },
     
@@ -24,8 +38,7 @@
           secure: true,
           data: JSON.stringify({
             "username" : '{{setting.username}}',
-            "password" : '{{setting.password}}',
-            "example"  : '{{setting.example}}'
+            "password" : '{{setting.password}}'
           })
         };
       },
@@ -38,8 +51,7 @@
           secure: true,
           data: JSON.stringify({
             "username" : '{{setting.username}}',
-            "password" : '{{setting.password}}',
-            "example"  : '{{setting.example}}'
+            "password" : '{{setting.password}}'
           })
         };
       }
@@ -49,19 +61,55 @@
     events: {
     	
       // Framework events
-      'app.activated' 		:'init',
+      'app.activated' 		   : 'init',
       
       // DOM events
-      'click .get'	  		:'handleClickGet',
-      'click .put'	  		:'handleClickPut',
-      'click .post'	      :'handleClickPost',
-      'click .toggle-app' :'toggleAppContainer', // hide/show app container
-      'click .home'				:'init'
+      'click .get'	  		   : 'handleClickGet',
+      'click .put'	  		   : 'handleClickPut',
+      'click .post'	         : 'handleClickPost',
+      'click .toggle-app'    : 'toggleAppContainer', // hide/show app container
+      'click .home'				   : 'init',
+      // Test URL - GET: https://api.lampiris.be/v1/contacts/00002E7A-68F9-432B-B64B-E910165105D0/customer
+      'click .get-lampiris'  : 'getLampirisContacts',
+      'click .put-lampiris'  : 'putLampirisContact',
+      'click .post-lampiris' : 'postLampirisContact',
     
     },
 
     init: function() {
     	this.switchTo('home');
+    },
+
+    getLampirisContacts: function() {
+      this.switchTo('loading');
+      services.notify('Making GET request');
+      this.ajax('getLampirisContacts')
+        .done(function(data){
+          services.notify('GET request completed!');
+          this.switchTo('response', {
+            get : true,
+            response : '(done) Results: ' + data.length + ' (see browser console for response details)'
+          });
+          console.log('Response below:');
+          console.log(data);
+        })
+        .fail(function(data){
+          services.notify('GET request failed.');
+          this.switchTo('response', {
+            get : true,
+            response : '(fail) Results: ' + data.length + ' (see browser console for response details)'
+          });
+          console.log('Response below:');
+          console.log(data);
+        });
+    },
+
+    putLampirisContact: function() {
+      // code
+    },
+    
+    postLampirisContact: function() {
+      // code
     },
 
     handleClickGet: function() {
